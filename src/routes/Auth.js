@@ -30,12 +30,10 @@ const Auth = () => {
     e.preventDefault();
 
     try {
-      let data;
-
       if (newAccount) {
-        data = await createUserWithEmailAndPassword(authService, email, password);
+        await createUserWithEmailAndPassword(authService, email, password);
       } else {
-        data = await signInWithEmailAndPassword(authService, email, password);
+        await signInWithEmailAndPassword(authService, email, password);
       }
     } catch (err) {
       setError(err.message);
@@ -56,9 +54,7 @@ const Auth = () => {
       provider = new GithubAuthProvider();
     }
 
-    const data = await signInWithPopup(authService, provider);
-
-    console.log(data);
+    await signInWithPopup(authService, provider);
   };
 
   return (
