@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Auth from "../routes/Auth";
-import Home from "../routes/Home";
+import Auth from "routes/Auth";
+import Home from "routes/Home";
+import Profile from "routes/Profile";
+import Navigation from "components/Navigation";
 
-const AppRouter = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
+const AppRouter = ({ isLoggedIn }) => {
   return (
     <Router>
+      {isLoggedIn && <Navigation />}
       <Routes>
         {isLoggedIn ? (
           <>
             <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
           </>
         ) : (
           <>
